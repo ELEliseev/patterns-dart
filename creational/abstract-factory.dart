@@ -1,66 +1,71 @@
-abstract class IProduct {
-  String someLogic();
+// Абстрактная фабрика – это интерфейс,
+// который группирует другие фабрики,
+//  логически связанные друг с другом.
+
+abstract class IDoor {
+  String material();
 }
 
-class Product1 implements IProduct {
-  String someLogic() {
-    return 'I am Product1';
+abstract class IFourniture {
+  String fournitureMaterial();
+}
+
+class WoodenDoor implements IDoor {
+  String material() {
+    return 'wooden door';
   }
 }
 
-class Product2 implements IProduct {
-  String someLogic() {
-    return 'I am Product2';
+class WoodenFourniture implements IFourniture {
+  String fournitureMaterial() {
+    return 'wooden fourniture';
   }
 }
 
-abstract class IOtherProduct {
-  String otherLogic();
-}
-
-class OtherProduct1 implements IOtherProduct {
-  String otherLogic() {
-    return 'I am OtherProduct1';
+class IronDoor implements IDoor {
+  String material() {
+    return 'iron door';
   }
 }
 
-class OtherProduct2 implements IOtherProduct {
-  String otherLogic() {
-    return 'I am OtherProduct2';
+class IronFourniture implements IFourniture {
+  String fournitureMaterial() {
+    return 'iron fourniture';
   }
 }
 
 abstract class IFactory {
-  IProduct createProduct();
-  IOtherProduct createOtherProduct();
+  IDoor createDoor();
+  IFourniture createFourniture();
 }
 
-class Factory implements IFactory {
-  Product1 createProduct() {
-    return Product1();
+class WoodenFactory implements IFactory {
+  WoodenDoor createDoor() {
+    return WoodenDoor();
   }
 
-  OtherProduct1 createOtherProduct() {
-    return OtherProduct1();
+  IFourniture createFourniture() {
+    return WoodenFourniture();
   }
 }
 
-class OtherFactory implements IFactory {
-  Product2 createProduct() {
-    return Product2();
+class IronFactory implements IFactory {
+  IronDoor createDoor() {
+    return IronDoor();
   }
 
-  OtherProduct2 createOtherProduct() {
-    return OtherProduct2();
+  IronFourniture createFourniture() {
+    return IronFourniture();
   }
 }
 
 void main(List<String> args) {
-  Factory factory1 = Factory();
-  print(factory1.createProduct().someLogic());
-  print(factory1.createOtherProduct().otherLogic());
+  IFactory _factory = WoodenFactory();
 
-  OtherFactory factory2 = OtherFactory();
-  print(factory2.createProduct().someLogic());
-  print(factory2.createOtherProduct().otherLogic());
+  if (args.isNotEmpty && args[0] == 'iron') {
+    _factory = IronFactory();
+  }
+
+  print(_factory.createDoor().material());
+  print(_factory.createFourniture().fournitureMaterial());
 }

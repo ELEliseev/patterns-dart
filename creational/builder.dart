@@ -1,3 +1,6 @@
+// Строитель — это порождающий паттерн проектирования,
+//  который позволяет создавать сложные объекты пошагово.
+
 class Car {
   List<String> wheels = [];
 }
@@ -47,15 +50,15 @@ class Builder implements IBuilder {
     return this;
   }
 
-  get car {
+  get build {
     return _car;
   }
 }
 
 void main(List<String> args) {
-  Car car = Builder().method1().method2().method3().method4().method5().car;
+  Car car = Builder().method1().method2().method3().method4().method5().build;
   Car carWithoutReserveWeel =
-      Builder().method1().method2().method3().method4().car;
+      Builder().method1().method2().method3().method4().build;
 
   print(car.wheels);
   print(carWithoutReserveWeel.wheels);

@@ -1,58 +1,48 @@
+// Паттерн Фабричный метод позволяет делегировать
+// логику создания нужных экземпляров дочерним классам.
+
 abstract class IProduct {
-  String someOperation();
+  String price();
 }
 
-abstract class ICreator {
-  IProduct factoryMethod();
-  String someBisnesLogic();
+abstract class ISeller {
+  IProduct buyProduct();
 }
 
-class Creator implements ICreator {
-  Product factoryMethod() {
-    return Product();
-  }
-
-  String someBisnesLogic() {
-    final product = factoryMethod();
-
-    return 'Bisness logic + ${product.someOperation()}';
+class MilkSeller implements ISeller {
+  Milk buyProduct() {
+    return Milk();
   }
 }
 
-class OtherCreator implements ICreator {
-  OtherProduct factoryMethod() {
-    return OtherProduct();
-  }
-
-  String someBisnesLogic() {
-    final product = factoryMethod();
-
-    return 'Bisness logic + ${product.someOperation()}';
+class MeetSeller implements ISeller {
+  Meet buyProduct() {
+    return Meet();
   }
 }
 
-class Product implements IProduct {
-  String someOperation() {
-    return 'This is product from factory method 1';
+class Milk implements IProduct {
+  String price() {
+    return 'milk 100 Rubles';
   }
 }
 
-class OtherProduct implements IProduct {
-  String someOperation() {
-    return 'This is product from factory method 2';
+class Meet implements IProduct {
+  String price() {
+    return 'meet 500 Rubles';
   }
 }
 
 void main(List<String> args) {
-  Creator creator = Creator();
-  print(creator
-      .someBisnesLogic()); //bisness logic + This is product from factory method 1
-  Product product = creator.factoryMethod();
-  print(product.someOperation()); //This is product from factory method 1
-
-  OtherCreator otherCreator = OtherCreator();
-  print(otherCreator
-      .someBisnesLogic()); //bisness logic + This is product from factory method 2
-  OtherProduct otherProduct = otherCreator.factoryMethod();
-  print(otherProduct.someOperation()); //This is product from factory method 2
+  if (args.isNotEmpty && args[0] == 'milk') {
+    Milk milk = MilkSeller().buyProduct();
+    print(milk.price());
+    return;
+  }
+  if (args.isNotEmpty && args[0] == 'meet') {
+    Meet meet = MeetSeller().buyProduct();
+    print(meet.price());
+    return;
+  }
+  print('choose product : meet or milk');
 }

@@ -1,3 +1,7 @@
+// Одиночка — это порождающий паттерн проектирования,
+// который гарантирует,
+// что у класса есть только один экземпляр.
+
 class Singleton {
   Singleton._privateConstructor();
 
@@ -8,7 +12,7 @@ class Singleton {
   }
 }
 
-main() {
+void main(List<String> args) {
   Singleton one = Singleton();
   Singleton other = Singleton();
 
