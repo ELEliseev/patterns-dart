@@ -10,61 +10,44 @@
 // ---------------------------------------------------------------------------
 // | Адаптер     | Изменяет                 | Не изменяет                    |
 // ---------------------------------------------------------------------------
-abstract class IOctan {
+abstract class ICar {
   int get cost;
+  int get speed;
 }
 
-class Octan implements IOctan {
-  final int _cost = 20;
+class MitsubishiLancer implements ICar {
+  final int _speed = 180;
+  final int _cost = 10000;
+
+  get speed {
+    return _speed;
+  }
 
   get cost {
     return _cost;
   }
 }
 
-class AI92 implements IOctan {
-  final Octan octan;
-  final int _diffCost = 5;
+class MitsubishiLancerEvolution implements ICar {
+  final MitsubishiLancer mitsubishiLancer;
+  int _diffSpeed = 60;
+  int _diffCost = 6000;
 
-  AI92(this.octan);
+  MitsubishiLancerEvolution(this.mitsubishiLancer);
 
-  get cost {
-    print('ai92: ${_diffCost + octan.cost}');
-    return _diffCost + octan.cost;
+  get speed {
+    return _diffSpeed + mitsubishiLancer.speed;
   }
-}
-
-class AI95 implements IOctan {
-  final Octan octan;
-  final int _diffCost = 10;
-
-  AI95(this.octan);
 
   get cost {
-    print('ai95: ${_diffCost + octan.cost}');
-    return _diffCost + octan.cost;
-  }
-}
-
-class Diesel implements IOctan {
-  final Octan octan;
-  final int _diffCost = 12;
-
-  Diesel(this.octan);
-
-  get cost {
-    print('diesel: ${_diffCost + octan.cost}');
-    return _diffCost + octan.cost;
+    return _diffCost + mitsubishiLancer.cost;
   }
 }
 
 void main(List<String> args) {
-  Octan octan = Octan();
-  AI92 ai92 = AI92(octan);
-  AI95 ai95 = AI95(octan);
-  Diesel diesel = Diesel(octan);
+  MitsubishiLancer lancer = MitsubishiLancer();
+  MitsubishiLancerEvolution lancerEvo = MitsubishiLancerEvolution(lancer);
 
-  ai92.cost;
-  ai95.cost;
-  diesel.cost;
+  print('lancer: speed: ${lancer.speed},cost: ${lancer.cost}\$');
+  print('evolution: speed: ${lancerEvo.speed},cost: ${lancerEvo.cost}\$');
 }
