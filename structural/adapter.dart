@@ -2,34 +2,39 @@
 //  который позволяет объектам с несовместимыми интерфейсами
 //  работать вместе.
 
-class UpperCase {
+class SendString {
   String send(String data) {
-    return data.toUpperCase();
+    return data;
   }
 }
 
-class SendData {
-  String push(String data) {
-    data += '\n';
-    data += 'this lower';
-    return data.toLowerCase();
+class SendInt {
+  int push(int data) {
+    return data + 100;
   }
 }
 
-class Adapter extends UpperCase {
-  SendData lower;
-  Adapter(this.lower);
+class Adapter extends SendString {
+  SendInt sendInt;
+  Adapter(this.sendInt);
 
   @override
   String send(String data) {
-    String lower = this.lower.push(data);
-    return super.send(lower);
+    int? getInt = int.tryParse(data);
+
+    if (getInt == null) {
+      throw Exception('this argument not transformed to int');
+    }
+
+    int sendInt = this.sendInt.push(getInt);
+
+    return sendInt.toString();
   }
 }
 
 void main(List<String> args) {
-  SendData lowerCase = SendData();
+  SendInt sendInt = SendInt();
 
-  String transformed = Adapter(lowerCase).send('data');
+  String transformed = Adapter(sendInt).send('223');
   print(transformed);
 }
