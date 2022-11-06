@@ -35,6 +35,10 @@ class MitsubishiLancerEvolution implements ICar {
 
   MitsubishiLancerEvolution(this.mitsubishiLancer);
 
+  get isTurbo {
+    return true;
+  }
+
   get speed {
     return _diffSpeed + mitsubishiLancer.speed;
   }
