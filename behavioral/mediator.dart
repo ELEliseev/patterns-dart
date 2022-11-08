@@ -41,7 +41,7 @@ class UsersChat extends Chat {
   sendTo<T extends User>(User from, String message) {
     final User to = users.where((user) => user != from).whereType<T>().first;
 
-    to.receive(to.name, message);
+    to.receive(from.name, message);
   }
 }
 
@@ -64,6 +64,7 @@ void main(List<String> args) {
   max.sendTo<Alex>('hello');
   max.sendTo<Alex>('it\'s Max');
   max.sendTo<Alex>('How are you?');
+
   alex.sendTo<Max>('hello');
   alex.sendTo<Max>('I am fine thanks, are you?');
 
