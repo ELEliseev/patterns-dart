@@ -15,7 +15,7 @@ abstract class "patterns_dart::creational::builder::builder.dart::IBuilder" {
 
 class "patterns_dart::creational::builder::builder.dart::Builder" {
   -Car _car
-  +dynamic build
+  +Car build
   +dynamic method1()
   +dynamic method2()
   +dynamic method3()

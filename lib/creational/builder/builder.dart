@@ -50,7 +50,7 @@ class Builder implements IBuilder {
     return this;
   }
 
-  get build {
+  Car get build {
     return _car;
   }
 }
