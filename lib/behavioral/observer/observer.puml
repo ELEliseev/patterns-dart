@@ -1,0 +1,45 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::observer::observer.dart::IObserver" {
+  +dynamic update()
+}
+
+abstract class "patterns_dart::behavioral::observer::observer.dart::ISubject" {
+  +String state
+  +dynamic attach()
+  +dynamic detach()
+  +dynamic notify()
+}
+
+class "patterns_dart::behavioral::observer::observer.dart::Subject" {
+  +String state
+  +Set<IObserver> observers
+  +dynamic attach()
+  +dynamic detach()
+  +dynamic notify()
+  +dynamic next()
+}
+
+"patterns_dart::behavioral::observer::observer.dart::ISubject" <|-- "patterns_dart::behavioral::observer::observer.dart::Subject"
+
+class "patterns_dart::behavioral::observer::observer.dart::OneObserver" {
+  +dynamic update()
+}
+
+"patterns_dart::behavioral::observer::observer.dart::IObserver" <|-- "patterns_dart::behavioral::observer::observer.dart::OneObserver"
+
+class "patterns_dart::behavioral::observer::observer.dart::TwoObserver" {
+  +dynamic update()
+}
+
+"patterns_dart::behavioral::observer::observer.dart::IObserver" <|-- "patterns_dart::behavioral::observer::observer.dart::TwoObserver"
+
+class "patterns_dart::behavioral::observer::observer.dart::ThreeObserver" {
+  +dynamic update()
+}
+
+"patterns_dart::behavioral::observer::observer.dart::IObserver" <|-- "patterns_dart::behavioral::observer::observer.dart::ThreeObserver"
+
+
+@enduml
