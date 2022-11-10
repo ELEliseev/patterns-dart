@@ -1,0 +1,51 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::command::command.dart::Command" {
+  +String name
+  +dynamic execute()
+  +dynamic undo()
+}
+
+class "patterns_dart::behavioral::command::command.dart::Shape" {
+  +String color
+  +int size
+  +dynamic description
+}
+
+class "patterns_dart::behavioral::command::command.dart::SetColorCommand" {
+  +String name
+  +String color
+  +Shape shape
+  +String preColor
+  +dynamic execute()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::command::command.dart::SetColorCommand" o-- "patterns_dart::behavioral::command::command.dart::Shape"
+"patterns_dart::behavioral::command::command.dart::Command" <|-- "patterns_dart::behavioral::command::command.dart::SetColorCommand"
+
+class "patterns_dart::behavioral::command::command.dart::SetSizeCommand" {
+  +String name
+  +int size
+  +Shape shape
+  +int preSize
+  +dynamic execute()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::command::command.dart::SetSizeCommand" o-- "patterns_dart::behavioral::command::command.dart::Shape"
+"patterns_dart::behavioral::command::command.dart::Command" <|-- "patterns_dart::behavioral::command::command.dart::SetSizeCommand"
+
+class "patterns_dart::behavioral::command::command.dart::CommandHistory" {
+  -ListQueue<Command> _commandList
+  +dynamic isEmpty
+  +dynamic list
+  +dynamic add()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::command::command.dart::CommandHistory" o-- "dart::collection::ListQueue<Command>"
+
+
+@enduml

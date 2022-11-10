@@ -1,0 +1,33 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::structural::bridge::bridge.dart::ITheme" {
+  +List<String> colors
+}
+
+class "patterns_dart::structural::bridge::bridge.dart::LightTheme" {
+  +List<String> colors
+}
+
+"patterns_dart::structural::bridge::bridge.dart::ITheme" <|-- "patterns_dart::structural::bridge::bridge.dart::LightTheme"
+
+class "patterns_dart::structural::bridge::bridge.dart::BlackTheme" {
+  +List<String> colors
+}
+
+"patterns_dart::structural::bridge::bridge.dart::ITheme" <|-- "patterns_dart::structural::bridge::bridge.dart::BlackTheme" 
+
+class "patterns_dart::structural::bridge::bridge.dart::HomePage" {
+  +ITheme theme
+}
+
+"patterns_dart::structural::bridge::bridge.dart::HomePage" o-- "patterns_dart::structural::bridge::bridge.dart::ITheme"    
+
+class "patterns_dart::structural::bridge::bridge.dart::AboutPage" {
+  +ITheme theme
+}
+
+"patterns_dart::structural::bridge::bridge.dart::AboutPage" o-- "patterns_dart::structural::bridge::bridge.dart::ITheme"   
+
+
+@enduml

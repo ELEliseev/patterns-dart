@@ -1,0 +1,33 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::structural::composite::composite.dart::Component" {
+  +String name
+  -Component? _parent
+  +dynamic setParent()
+  +Component? getParent()
+  +bool isMenu()
+  +String operation()
+}
+
+"patterns_dart::structural::composite::composite.dart::Component" o-- "patterns_dart::structural::composite::composite.dart::Component"
+
+class "patterns_dart::structural::composite::composite.dart::Menu" {
+  +List<Component> children
+  +bool isMenu()
+  +String operation()
+  +dynamic add()
+  +dynamic remove()
+}
+
+"patterns_dart::structural::composite::composite.dart::Component" <|-- "patterns_dart::structural::composite::composite.dart::Menu"
+
+class "patterns_dart::structural::composite::composite.dart::Method" {
+  +bool isMenu()
+  +String operation()
+}
+
+"patterns_dart::structural::composite::composite.dart::Component" <|-- "patterns_dart::structural::composite::composite.dart::Method"
+
+
+@enduml

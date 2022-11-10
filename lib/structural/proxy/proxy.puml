@@ -1,0 +1,26 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::structural::proxy::proxy.dart::Request" {
+  +String request()
+}
+
+class "patterns_dart::structural::proxy::proxy.dart::RealSubject" {
+  +String request()
+}
+
+"patterns_dart::structural::proxy::proxy.dart::Request" <|-- "patterns_dart::structural::proxy::proxy.dart::RealSubject"   
+
+class "patterns_dart::structural::proxy::proxy.dart::ProxySubject" {
+  +RealSubject realSubject
+  +String request()
+  +bool isLogin()
+  +dynamic goToLoginPage()
+  +dynamic log()
+}
+
+"patterns_dart::structural::proxy::proxy.dart::ProxySubject" o-- "patterns_dart::structural::proxy::proxy.dart::RealSubject"
+"patterns_dart::structural::proxy::proxy.dart::Request" <|-- "patterns_dart::structural::proxy::proxy.dart::ProxySubject"  
+
+
+@enduml

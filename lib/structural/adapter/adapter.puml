@@ -1,0 +1,67 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::structural::adapter::adapter.dart::SendString" {
+  +String send()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::SendInt" {
+  +int push()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::Adapter" {
+  +SendInt sendInt
+  +String send()
+}
+
+"patterns_dart::structural::adapter::adapter.dart::Adapter" o-- "patterns_dart::structural::adapter::adapter.dart::SendInt""patterns_dart::structural::adapter::adapter.dart::SendString" <|-- "patterns_dart::structural::adapter::adapter.dart::Adapter"
+
+
+@enduml
+
+Eliseev.EL@LAPTOP-MUH2PJP6 MINGW64 ~/Documents/patterns-dart (master)
+$ dart run dcdg -s './lib/structural/adapter/'
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::structural::adapter::adapter.dart::SendString" {
+  +String send()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::SendInt" {
+  +int push()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::Adapter" {
+  +SendInt sendInt
+  +String send()
+}
+
+"patterns_dart::structural::adapter::adapter.dart::Adapter" o-- "patterns_dart::structural::adapter::adapter.dart::SendInt""patterns_dart::structural::adapter::adapter.dart::SendString" <|-- "patterns_dart::structural::adapter::adapter.dart::Adapter"
+
+
+@enduml
+
+Eliseev.EL@LAPTOP-MUH2PJP6 MINGW64 ~/Documents/patterns-dart (master)
+$ dart run dcdg -s './lib/structural/adapter/'
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::structural::adapter::adapter.dart::SendString" {
+  +String send()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::SendInt" {
+  +int push()
+}
+
+class "patterns_dart::structural::adapter::adapter.dart::Adapter" {
+  +SendInt sendInt
+  +String send()
+}
+
+"patterns_dart::structural::adapter::adapter.dart::Adapter" o-- "patterns_dart::structural::adapter::adapter.dart::SendInt"
+"patterns_dart::structural::adapter::adapter.dart::SendString" <|-- "patterns_dart::structural::adapter::adapter.dart::Adapter"
+
+
+@enduml

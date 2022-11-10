@@ -1,0 +1,22 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::structural::flyweight::flyweight.dart::EnemyType" {
+  +String name
+  +String bigData
+}
+
+class "patterns_dart::structural::flyweight::flyweight.dart::Enemy" {
+  {static} +Map<String, EnemyType> types
+  +EnemyType type
+  +int x
+  +int y
+  +void moveTo()
+  +void draw()
+  {static} +EnemyType getType()
+}
+
+"patterns_dart::structural::flyweight::flyweight.dart::Enemy" o-- "patterns_dart::structural::flyweight::flyweight.dart::EnemyType"
+
+
+@enduml

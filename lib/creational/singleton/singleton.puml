@@ -1,0 +1,11 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::creational::singleton::singleton.dart::Singleton" {
+  {static} -Singleton _instance
+}
+
+"patterns_dart::creational::singleton::singleton.dart::Singleton" o-- "patterns_dart::creational::singleton::singleton.dart::Singleton"
+
+
+@enduml

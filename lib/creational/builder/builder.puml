@@ -1,0 +1,30 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::creational::builder::builder.dart::Car" {
+  +List<String> wheels
+}
+
+abstract class "patterns_dart::creational::builder::builder.dart::IBuilder" {
+  +dynamic method1()
+  +dynamic method2()
+  +dynamic method3()
+  +dynamic method4()
+  +dynamic method5()
+}
+
+class "patterns_dart::creational::builder::builder.dart::Builder" {
+  -Car _car
+  +dynamic build
+  +dynamic method1()
+  +dynamic method2()
+  +dynamic method3()
+  +dynamic method4()
+  +dynamic method5()
+}
+
+"patterns_dart::creational::builder::builder.dart::Builder" o-- "patterns_dart::creational::builder::builder.dart::Car"    
+"patterns_dart::creational::builder::builder.dart::IBuilder" <|-- "patterns_dart::creational::builder::builder.dart::Builder"
+
+
+@enduml

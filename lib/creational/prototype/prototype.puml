@@ -1,0 +1,54 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::creational::factory-method::factory-method.dart::IProduct" {
+  +String price()
+}
+
+abstract class "patterns_dart::creational::factory-method::factory-method.dart::ISeller" {
+  +IProduct buyProduct()
+}
+
+class "patterns_dart::creational::factory-method::factory-method.dart::MilkSeller" {
+  +Milk buyProduct()
+}
+
+"patterns_dart::creational::factory-method::factory-method.dart::ISeller" <|-- "patterns_dart::creational::factory-method::factory-method.dart::MilkSeller"
+
+class "patterns_dart::creational::factory-method::factory-method.dart::MeetSeller" {
+  +Meet buyProduct()
+}
+
+"patterns_dart::creational::factory-method::factory-method.dart::ISeller" <|-- "patterns_dart::creational::factory-method::factory-method.dart::MeetSeller"
+
+class "patterns_dart::creational::factory-method::factory-method.dart::Milk" {
+  +String price()
+}
+
+"patterns_dart::creational::factory-method::factory-method.dart::IProduct" <|-- "patterns_dart::creational::factory-method::factory-method.dart::Milk"
+
+class "patterns_dart::creational::factory-method::factory-method.dart::Meet" {
+  +String price()
+}
+
+"patterns_dart::creational::factory-method::factory-method.dart::IProduct" <|-- "patterns_dart::creational::factory-method::factory-method.dart::Meet"
+
+
+@enduml
+
+Eliseev.EL@LAPTOP-MUH2PJP6 MINGW64 ~/Documents/patterns-dart (master)
+$ dart run dcdg -s './lib/creational/prototype/'
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::creational::prototype::prototype.dart::Prototype" {
+  +String name
+  +String surname
+  +int age
+  -int _bill
+  +dynamic bill
+  +Prototype clone()
+}
+
+
+@enduml

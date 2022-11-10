@@ -1,0 +1,39 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::mediator::mediator.dart::User" {
+  +String name
+  +Chat? chat
+  +List<String> messages
+  +dynamic receive()
+  +dynamic sendTo()
+}
+
+"patterns_dart::behavioral::mediator::mediator.dart::User" o-- "patterns_dart::behavioral::mediator::mediator.dart::Chat"  
+
+abstract class "patterns_dart::behavioral::mediator::mediator.dart::Chat" {
+  +List<User> users
+  +dynamic add()
+  +dynamic sendTo()
+}
+
+class "patterns_dart::behavioral::mediator::mediator.dart::UsersChat" {
+  +List<User> users
+  +dynamic add()
+  +dynamic sendTo()
+}
+
+"patterns_dart::behavioral::mediator::mediator.dart::Chat" <|-- "patterns_dart::behavioral::mediator::mediator.dart::UsersChat"
+
+class "patterns_dart::behavioral::mediator::mediator.dart::Alex" {
+}
+
+"patterns_dart::behavioral::mediator::mediator.dart::User" <|-- "patterns_dart::behavioral::mediator::mediator.dart::Alex" 
+
+class "patterns_dart::behavioral::mediator::mediator.dart::Max" {
+}
+
+"patterns_dart::behavioral::mediator::mediator.dart::User" <|-- "patterns_dart::behavioral::mediator::mediator.dart::Max"  
+
+
+@enduml

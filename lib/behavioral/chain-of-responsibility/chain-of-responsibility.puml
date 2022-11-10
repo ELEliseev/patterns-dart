@@ -1,0 +1,36 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RublesConverter" {
+  +String target
+  +int count
+}
+
+abstract class "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler" {        
+  +RubblesHandler? nextHandler
+  +RubblesHandler setNext()
+  +String handle()
+}
+
+"patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler" o-- "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler"
+
+class "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToDollarHandler" {
+  +String handle()
+}
+
+"patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler" <|-- "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToDollarHandler"
+
+class "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToEuroHandler" {
+  +String handle()
+}
+
+"patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler" <|-- "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToEuroHandler"
+
+class "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToYenHandler" {
+  +String handle()
+}
+
+"patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesHandler" <|-- "patterns_dart::behavioral::chain-of-responsibility::chain-of-responsibility.dart::RubblesToYenHandler"
+
+
+@enduml

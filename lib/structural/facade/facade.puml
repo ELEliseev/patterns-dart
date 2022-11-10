@@ -1,0 +1,46 @@
+@startuml
+set namespaceSeparator ::
+
+class "patterns_dart::structural::facade::facade.dart::Radio" {
+  +String play()
+}
+
+class "patterns_dart::structural::facade::facade.dart::Mp3" {
+  +String play()
+}
+
+class "patterns_dart::structural::facade::facade.dart::Bluetooth" {
+  +String play()
+}
+
+class "patterns_dart::structural::facade::facade.dart::Avi" {
+  +String play()
+}
+
+class "patterns_dart::structural::facade::facade.dart::Player" {
+  +Avi avi
+  +Bluetooth bluetooth
+  +Mp3 mp3
+  +Radio radio
+  +String play()
+}
+
+"patterns_dart::structural::facade::facade.dart::Player" o-- "patterns_dart::structural::facade::facade.dart::Avi"
+"patterns_dart::structural::facade::facade.dart::Player" o-- "patterns_dart::structural::facade::facade.dart::Bluetooth"   
+"patterns_dart::structural::facade::facade.dart::Player" o-- "patterns_dart::structural::facade::facade.dart::Mp3"
+"patterns_dart::structural::facade::facade.dart::Player" o-- "patterns_dart::structural::facade::facade.dart::Radio"       
+
+class "patterns_dart::structural::facade::facade.dart::MusicType" {
+  +int index
+  {static} +List<MusicType> values
+  {static} +MusicType Avi
+  {static} +MusicType Mp3
+  {static} +MusicType Radio
+  {static} +MusicType Bloetooth
+}
+
+"patterns_dart::structural::facade::facade.dart::MusicType" o-- "patterns_dart::structural::facade::facade.dart::MusicType"
+"dart::core::Enum" <|-- "patterns_dart::structural::facade::facade.dart::MusicType"
+
+
+@enduml

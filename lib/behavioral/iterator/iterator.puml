@@ -1,0 +1,55 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::iterator::iterator.dart::Iterator" {
+  +String name
+  +T? next()
+  +dynamic reset()
+  +bool hasNext()
+}
+
+abstract class "patterns_dart::behavioral::iterator::iterator.dart::ICollection" {
+  +Iterator<dynamic> getIterator()
+  +bool isEmpty()
+}
+
+class "patterns_dart::behavioral::iterator::iterator.dart::Collection" {
+  +List<String> list
+  +Collection addWord()
+  +AlphabeticalIterator getIterator()
+  +LengthIterator getLengthIterator()
+  +bool isEmpty()
+}
+
+"patterns_dart::behavioral::iterator::iterator.dart::ICollection" <|-- "patterns_dart::behavioral::iterator::iterator.dart::Collection"
+
+class "patterns_dart::behavioral::iterator::iterator.dart::AlphabeticalIterator" {
+  +Collection collection
+  +ListQueue<dynamic> queue
+  +String name
+  +bool hasNext()
+  +String? next()
+  +dynamic reset()
+  +dynamic initIterator()
+}
+
+"patterns_dart::behavioral::iterator::iterator.dart::AlphabeticalIterator" o-- "patterns_dart::behavioral::iterator::iterator.dart::Collection"
+"patterns_dart::behavioral::iterator::iterator.dart::AlphabeticalIterator" o-- "dart::collection::ListQueue<dynamic>"      
+"patterns_dart::behavioral::iterator::iterator.dart::Iterator" <|-- "patterns_dart::behavioral::iterator::iterator.dart::AlphabeticalIterator"
+
+class "patterns_dart::behavioral::iterator::iterator.dart::LengthIterator" {
+  +Collection collection
+  +ListQueue<dynamic> queue
+  +String name
+  +bool hasNext()
+  +String? next()
+  +dynamic reset()
+  +dynamic initIterator()
+}
+
+"patterns_dart::behavioral::iterator::iterator.dart::LengthIterator" o-- "patterns_dart::behavioral::iterator::iterator.dart::Collection"
+"patterns_dart::behavioral::iterator::iterator.dart::LengthIterator" o-- "dart::collection::ListQueue<dynamic>"
+"patterns_dart::behavioral::iterator::iterator.dart::Iterator" <|-- "patterns_dart::behavioral::iterator::iterator.dart::LengthIterator"
+
+
+@enduml

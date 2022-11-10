@@ -1,0 +1,68 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::memento::memento.dart::ICommand" { 
+  +dynamic execute()
+  +dynamic undo()
+}
+
+class "patterns_dart::behavioral::memento::memento.dart::ChangeColorCommand" {
+  +Originator originator
+  -IMemento _backup
+  +String color
+  +dynamic execute()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::memento::memento.dart::ChangeColorCommand" o-- "patterns_dart::behavioral::memento::memento.dart::Originator"
+"patterns_dart::behavioral::memento::memento.dart::ChangeColorCommand" o-- "patterns_dart::behavioral::memento::memento.dart::IMemento"
+"patterns_dart::behavioral::memento::memento.dart::ICommand" <|-- "patterns_dart::behavioral::memento::memento.dart::ChangeColorCommand"
+
+class "patterns_dart::behavioral::memento::memento.dart::ChangeSizeCommand" {
+  +Originator originator
+  -IMemento _backup
+  +int size
+  +dynamic execute()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::memento::memento.dart::ChangeSizeCommand" o-- "patterns_dart::behavioral::memento::memento.dart::Originator"
+"patterns_dart::behavioral::memento::memento.dart::ChangeSizeCommand" o-- "patterns_dart::behavioral::memento::memento.dart::IMemento"
+"patterns_dart::behavioral::memento::memento.dart::ICommand" <|-- "patterns_dart::behavioral::memento::memento.dart::ChangeSizeCommand"
+
+class "patterns_dart::behavioral::memento::memento.dart::CommandHistory" {
+  +ListQueue<ICommand> history
+  +dynamic add()
+  +dynamic undo()
+}
+
+"patterns_dart::behavioral::memento::memento.dart::CommandHistory" o-- "dart::collection::ListQueue<ICommand>"
+
+class "patterns_dart::behavioral::memento::memento.dart::Shape" {
+  +String color
+  +int size
+  +Shape clone()
+}
+
+abstract class "patterns_dart::behavioral::memento::memento.dart::IMemento" {
+  +Shape getState()
+}
+
+class "patterns_dart::behavioral::memento::memento.dart::Memento" {
+  -Shape _state
+  +Shape getState()
+}
+
+"patterns_dart::behavioral::memento::memento.dart::Memento" o-- "patterns_dart::behavioral::memento::memento.dart::Shape"  
+"patterns_dart::behavioral::memento::memento.dart::IMemento" <|-- "patterns_dart::behavioral::memento::memento.dart::Memento"
+
+class "patterns_dart::behavioral::memento::memento.dart::Originator" {
+  +Shape state
+  +IMemento createMemento()
+  +dynamic restore()
+}
+
+"patterns_dart::behavioral::memento::memento.dart::Originator" o-- "patterns_dart::behavioral::memento::memento.dart::Shape"
+
+
+@enduml

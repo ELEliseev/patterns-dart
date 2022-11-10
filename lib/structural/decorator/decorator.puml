@@ -1,0 +1,31 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::structural::decorator::decorator.dart::ICar" {
+  +int cost
+  +int speed
+}
+
+class "patterns_dart::structural::decorator::decorator.dart::MitsubishiLancer" {
+  -int _speed
+  -int _cost
+  +int speed
+  +int cost
+}
+
+"patterns_dart::structural::decorator::decorator.dart::ICar" <|-- "patterns_dart::structural::decorator::decorator.dart::MitsubishiLancer"
+
+class "patterns_dart::structural::decorator::decorator.dart::MitsubishiLancerEvolution" {
+  +MitsubishiLancer mitsubishiLancer
+  -int _diffSpeed
+  -int _diffCost
+  +dynamic isTurbo
+  +int speed
+  +int cost
+}
+
+"patterns_dart::structural::decorator::decorator.dart::MitsubishiLancerEvolution" o-- "patterns_dart::structural::decorator::decorator.dart::MitsubishiLancer"
+"patterns_dart::structural::decorator::decorator.dart::ICar" <|-- "patterns_dart::structural::decorator::decorator.dart::MitsubishiLancerEvolution"
+
+
+@enduml

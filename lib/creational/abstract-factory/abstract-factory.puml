@@ -1,0 +1,56 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IDoor" {      
+  +String material()
+}
+
+abstract class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IFourniture" {
+  +String fournitureMaterial()
+}
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenDoor" {
+  +String material()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IDoor" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenDoor"
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenFourniture" {
+  +String fournitureMaterial()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IFourniture" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenFourniture"
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronDoor" {
+  +String material()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IDoor" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronDoor"
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronFourniture" {
+  +String fournitureMaterial()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IFourniture" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronFourniture"
+
+abstract class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IFactory" {
+  +IDoor createDoor()
+  +IFourniture createFourniture()
+}
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenFactory" {
+  +WoodenDoor createDoor()
+  +IFourniture createFourniture()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IFactory" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::WoodenFactory"
+
+class "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronFactory" {
+  +IronDoor createDoor()
+  +IronFourniture createFourniture()
+}
+
+"patterns_dart::creational::abstract-factory::abstract-factory.dart::IFactory" <|-- "patterns_dart::creational::abstract-factory::abstract-factory.dart::IronFactory"
+
+
+@enduml
