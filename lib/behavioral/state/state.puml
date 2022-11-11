@@ -1,0 +1,39 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::state::state.dart::IState" {
+  -Context? _context
+  +dynamic setContext()
+  +Future<void> handle()
+}
+
+"patterns_dart::behavioral::state::state.dart::IState" o-- "patterns_dart::behavioral::state::state.dart::Context"   
+
+class "patterns_dart::behavioral::state::state.dart::Context" {
+  -IState _state
+  +dynamic transitionTo()
+  +Future<void> handle()
+}
+
+"patterns_dart::behavioral::state::state.dart::Context" o-- "patterns_dart::behavioral::state::state.dart::IState"   
+
+class "patterns_dart::behavioral::state::state.dart::ReadyState" {
+  +Future<void> handle()
+}
+
+"patterns_dart::behavioral::state::state.dart::IState" <|-- "patterns_dart::behavioral::state::state.dart::ReadyState"
+
+class "patterns_dart::behavioral::state::state.dart::LoadingState" {
+  +Future<void> handle()
+}
+
+"patterns_dart::behavioral::state::state.dart::IState" <|-- "patterns_dart::behavioral::state::state.dart::LoadingState"
+
+class "patterns_dart::behavioral::state::state.dart::LoadedState" {
+  +Future<void> handle()
+}
+
+"patterns_dart::behavioral::state::state.dart::IState" <|-- "patterns_dart::behavioral::state::state.dart::LoadedState"
+
+
+@enduml
