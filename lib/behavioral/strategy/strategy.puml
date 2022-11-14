@@ -1,0 +1,35 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::strategy::strategy.dart::Strategy" {
+  +int getResult()
+}
+
+class "patterns_dart::behavioral::strategy::strategy.dart::Context" {
+  -Strategy _strategy
+  +dynamic setStrategy()
+  +int getResult()
+}
+
+"patterns_dart::behavioral::strategy::strategy.dart::Context" o-- "patterns_dart::behavioral::strategy::strategy.dart::Strategy"
+
+class "patterns_dart::behavioral::strategy::strategy.dart::Multiply" {
+  +int getResult()
+}
+
+"patterns_dart::behavioral::strategy::strategy.dart::Strategy" <|-- "patterns_dart::behavioral::strategy::strategy.dart::Multiply"
+
+class "patterns_dart::behavioral::strategy::strategy.dart::Add" {
+  +int getResult()
+}
+
+"patterns_dart::behavioral::strategy::strategy.dart::Strategy" <|-- "patterns_dart::behavioral::strategy::strategy.dart::Add"
+
+class "patterns_dart::behavioral::strategy::strategy.dart::Substract" {
+  +int getResult()
+}
+
+"patterns_dart::behavioral::strategy::strategy.dart::Strategy" <|-- "patterns_dart::behavioral::strategy::strategy.dart::Substract"
+
+
+@enduml
