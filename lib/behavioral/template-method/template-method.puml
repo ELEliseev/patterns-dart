@@ -1,0 +1,25 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::template-method::template-method.dart::CarManager" {
+  +dynamic prepare()
+  +void hook1()
+  +void getDocuments()
+  +void requiredOperation1()
+  +void getInsurance()
+  +void requiredOperation2()
+  +void getNumbers()
+  +void getOil()
+  +void hook2()
+}
+
+class "patterns_dart::behavioral::template-method::template-method.dart::ConcreteCarManager" {
+  +void hook1()
+  +void requiredOperation1()
+  +void requiredOperation2()
+}
+
+"patterns_dart::behavioral::template-method::template-method.dart::CarManager" <|-- "patterns_dart::behavioral::template-method::template-method.dart::ConcreteCarManager"
+
+
+@enduml
