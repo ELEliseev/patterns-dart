@@ -30,16 +30,10 @@ class Avi {
 enum MusicType { Avi, Mp3, Radio, Bloetooth }
 
 class Player {
-  final Avi avi;
-  final Bluetooth bluetooth;
-  final Mp3 mp3;
-  final Radio radio;
-
-  Player(
-      {required this.radio,
-      required this.mp3,
-      required this.avi,
-      required this.bluetooth});
+  final radio = Radio();
+  final mp3 = Mp3();
+  final avi = Avi();
+  final bluetooth = Bluetooth();
 
   String play(MusicType type) {
     switch (type) {
@@ -58,15 +52,10 @@ class Player {
 }
 
 void main(List<String> args) {
-  final radio = Radio();
-  final mp3 = Mp3();
-  final avi = Avi();
-  final bluetooth = Bluetooth();
-
-  Player player =
-      Player(radio: radio, mp3: mp3, avi: avi, bluetooth: bluetooth);
+  Player player = Player();
 
   if (args.isEmpty) {
+    print('Ведите тип музыкального носителя');
     return;
   }
 

@@ -1,0 +1,68 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "patterns_dart::behavioral::visitor::visitor.dart::Visitor" {
+  +dynamic visitSquare()
+  +dynamic visitRectangle()
+  +dynamic visitCircle()
+}
+
+abstract class "patterns_dart::behavioral::visitor::visitor.dart::Shape" {
+  +dynamic move()
+  +dynamic draw()
+  +dynamic accept()
+}
+
+class "patterns_dart::behavioral::visitor::visitor.dart::Square" {
+  +int x
+  +int y
+  +int width
+  +dynamic move()
+  +dynamic draw()
+  +dynamic accept()
+}
+
+"patterns_dart::behavioral::visitor::visitor.dart::Shape" <|-- "patterns_dart::behavioral::visitor::visitor.dart::Square"
+
+class "patterns_dart::behavioral::visitor::visitor.dart::Rectangle" {
+  +int x
+  +int y
+  +int width
+  +int height
+  +dynamic move()
+  +dynamic draw()
+  +dynamic accept()
+}
+
+"patterns_dart::behavioral::visitor::visitor.dart::Shape" <|-- "patterns_dart::behavioral::visitor::visitor.dart::Rectangle"
+
+class "patterns_dart::behavioral::visitor::visitor.dart::Circle" {
+  +int x
+  +int y
+  +int radius
+  +dynamic move()
+  +dynamic draw()
+  +dynamic accept()
+}
+
+"patterns_dart::behavioral::visitor::visitor.dart::Shape" <|-- "patterns_dart::behavioral::visitor::visitor.dart::Circle"
+
+class "patterns_dart::behavioral::visitor::visitor.dart::AreaVisitor" {
+  +Circle circle
+  +Rectangle rectangle
+  +Square square
+  +dynamic visitCircle()
+  +dynamic visitRectangle()
+  +dynamic visitSquare()
+  +double getCircleArea()
+  +int getRectangleArea()
+  +int getSquareArea()
+}
+
+"patterns_dart::behavioral::visitor::visitor.dart::AreaVisitor" o-- "patterns_dart::behavioral::visitor::visitor.dart::Circle"        
+"patterns_dart::behavioral::visitor::visitor.dart::AreaVisitor" o-- "patterns_dart::behavioral::visitor::visitor.dart::Rectangle"     
+"patterns_dart::behavioral::visitor::visitor.dart::AreaVisitor" o-- "patterns_dart::behavioral::visitor::visitor.dart::Square"        
+"patterns_dart::behavioral::visitor::visitor.dart::Visitor" <|-- "patterns_dart::behavioral::visitor::visitor.dart::AreaVisitor"      
+
+
+@enduml
